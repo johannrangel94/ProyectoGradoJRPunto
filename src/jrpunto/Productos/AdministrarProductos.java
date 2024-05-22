@@ -2,21 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package jrpunto;
+package jrpunto.Productos;
 
-import jrpunto.Productos.AdministrarProductos;
-import jrpunto.Usuarios.AdministrarUsuarios;
+import jrpunto.Dashboard;
 
 /**
  *
  * @author hongu
  */
-public class Dashboard extends javax.swing.JFrame {
+public class AdministrarProductos extends javax.swing.JFrame {
 
     /**
-     * Creates new form Dashboard
+     * Creates new form AdministrarProductos
      */
-    public Dashboard() {
+    public AdministrarProductos() {
         initComponents();
     }
 
@@ -30,56 +29,59 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        labelUsuarios = new javax.swing.JLabel();
-        btnUsuarios = new javax.swing.JButton();
-        btnProductos = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        btnVerProductos = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labelUsuarios.setText("Administracion de usuarios");
-
-        btnUsuarios.setText("Usuarios");
-        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar productos");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuariosActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        btnProductos.setText("Inventario");
-        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+        btnVerProductos.setText("Ver productos");
+        btnVerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductosActionPerformed(evt);
+                btnVerProductosActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Administrar productos");
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnProductos)
-                    .addComponent(btnUsuarios)
-                    .addComponent(labelUsuarios))
-                .addContainerGap(980, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVerProductos)
+                            .addComponent(btnAgregar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVolver)))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(labelUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUsuarios)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProductos)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnVolver)
+                .addGap(119, 119, 119)
+                .addComponent(btnAgregar)
+                .addGap(83, 83, 83)
+                .addComponent(btnVerProductos)
+                .addContainerGap(314, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,17 +98,23 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        AdministrarUsuarios administrarUsuarios = new AdministrarUsuarios();
-        administrarUsuarios.setVisible(true);
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        AgregarProducto agregarProducto = new AgregarProducto();
+        agregarProducto.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnUsuariosActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-        AdministrarProductos administrarProductos = new AdministrarProductos();
-        administrarProductos.setVisible(true);
+    private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
+        VerProductos verProductos = new VerProductos();
+        verProductos.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnProductosActionPerformed
+    }//GEN-LAST:event_btnVerProductosActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        Dashboard dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,29 +133,28 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new AdministrarProductos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProductos;
-    private javax.swing.JButton btnUsuarios;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnVerProductos;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelUsuarios;
     // End of variables declaration//GEN-END:variables
 }
