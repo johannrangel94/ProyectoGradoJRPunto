@@ -92,4 +92,51 @@ public class ProductoCRUD {
             return false;
         }
     }
+    
+    public List<Producto> buscarProductosPorCriterio(String criterio) {
+    List<Producto> productos = new ArrayList<>();
+    String sql = "SELECT * FROM productos WHERE nombre LIKE ? OR descripcion LIKE ?";
+
+    try (Connection conexion = ConexionDB.conectar();
+         PreparedStatement statement = conexion.prepareStatement(sql)) {
+        
+        statement.setString(1, "%" + criterio + "%");
+        statement.setString(2, "%" + criterio + "%");
+        
+        try (ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                Producto producto = new Producto(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("descripcion"),
+                    resultSet.getDouble("precio"),
+                    resultSet.getInt("cantidad")
+                );
+                productos.add(producto);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        return productos;
+    }
+    
+    public boolean actualizarInventario(int productoId, int cantidadVendida) {
+    String sql = "UPDATE productos SET cantidad = cantidad - ? WHERE id = ?";
+    try (Connection conexion = ConexionDB.conectar();
+         PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+        statement.setInt(1, cantidadVendida);
+        statement.setInt(2, productoId);
+
+        int rowsUpdated = statement.executeUpdate();
+        return rowsUpdated > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+
 }
